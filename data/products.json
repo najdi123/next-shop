@@ -1,22 +1,92 @@
 [
   {
-    "id": 1,
-    "name": "Classic Tee",
-    "description": "A comfortable and stylish classic tee.",
-    "image": "/images/classic-tee.jpg",
-    "price": 25.99,
-    "sizes": ["S", "M", "L"],
-    "colors": ["Red", "Blue", "Green"],
-    "reviews": []
-  },
-  {
     "id": 2,
-    "name": "Slim Fit Jeans",
-    "description": "Modern slim-fit jeans for a trendy look.",
-    "image": "/images/slim-jeans.jpg",
+    "name": "Slim Fit Pants",
+    "description": "Modern slim-fit cotton pants for a trendy look.",
+    "images": {
+      "#000000": "/images/pants/black-pants.webp",
+      "#4B5F7B": "/images/pants/blue-pants.webp",
+      "#748195": "/images/pants/gray-pants.webp"
+    },
     "price": 49.99,
     "sizes": ["28", "30", "32"],
-    "colors": ["Black", "Blue", "Gray"],
-    "reviews": []
+    "colors": ["#000000", "#4B5F7B", "#748195"],
+    "reviews": [
+      {
+        "name": "Alice",
+        "review": "These pants fit perfectly and are very comfortable!",
+        "timestamp": "2023-10-01T12:00:00Z"
+      },
+      {
+        "name": "Bob",
+        "review": "Great quality and stylish design. Highly recommend!",
+        "timestamp": "2023-10-02T14:30:00Z"
+      },
+      {
+        "name": "Charlie",
+        "review": "The color options are fantastic, and they wash well.",
+        "timestamp": "2023-10-03T09:15:00Z"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Long Sleeve Shirt",
+    "description": "A stylish long sleeve shirt available in multiple colors.",
+    "images": {
+      "#2B2D4C": "/images/shirt/navy-shirt.webp",
+      "#83848D": "/images/shirt/gray-shirt.webp",
+      "#D5C9C0": "/images/shirt/beige-shirt.webp"
+    },
+    "price": 39.99,
+    "sizes": ["M", "L", "XL"],
+    "colors": ["#2B2D4C", "#83848D", "#D5C9C0"],
+    "reviews": [
+      {
+        "name": "David",
+        "review": "Very comfortable and looks great. Perfect for layering!",
+        "timestamp": "2023-10-01T10:45:00Z"
+      },
+      {
+        "name": "Eva",
+        "review": "I love the fit and the fabric is soft. Will buy more colors!",
+        "timestamp": "2023-10-02T11:20:00Z"
+      },
+      {
+        "name": "Frank",
+        "review": "The blue color is vibrant and the shirt holds its shape well.",
+        "timestamp": "2023-10-03T15:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Hoodie",
+    "description": "A cozy hoodie perfect for chilly days.",
+    "images": {
+      "#D22D40": "/images/hoodie/red-hoodie.webp",
+      "#000000": "/images/hoodie/black-hoodie.webp",
+      "#FFFFFF": "/images/hoodie/white-hoodie.webp"
+    },
+    "price": 49.99,
+    "sizes": ["S", "M", "L"],
+    "colors": ["#D22D40", "#000000", "#FFFFFF"],
+    "reviews": [
+      {
+        "name": "Grace",
+        "review": "Super warm and comfortable! I wear it all the time.",
+        "timestamp": "2023-10-01T08:30:00Z"
+      },
+      {
+        "name": "Henry",
+        "review": "The quality is excellent, and it fits true to size.",
+        "timestamp": "2023-10-02T13:00:00Z"
+      },
+      {
+        "name": "Isla",
+        "review": "I love the red color! It's perfect for winter.",
+        "timestamp": "2023-10-03T16:45:00Z"
+      }
+    ]
   }
 ]

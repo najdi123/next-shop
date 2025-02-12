@@ -8,7 +8,7 @@ export type Product = {
   id: number;
   name: string;
   description: string;
-  image: string;
+  images: { [color: string]: string };
   price: number;
   sizes: string[];
   colors: string[];
