@@ -22,7 +22,7 @@ export default function Home() {
         {products.map((product) => (
           <div key={product.id} className="border p-4 rounded-lg">
             <img
-              src={product.image}
+              src={product.images[product.colors[0]]} // Get the image for the first color
               alt={product.name}
               className="w-full h-48 object-cover mb-2"
             />
@@ -30,8 +30,8 @@ export default function Home() {
             <p className="text-gray-600">{product.description}</p>
             <p className="text-lg font-bold">${product.price}</p>
             <div className="mt-2">
-              {/* <p className="text-sm">Sizes: {product.sizes.join(", ")}</p>
-              <p className="text-sm">Colors: {product.colors.join(", ")}</p> */}
+              {/* <p className="text-sm">Sizes: {product.sizes.join(", ")}</p> */}
+              {/* <p className="text-sm">Colors: {product.colors.join(", ")}</p> */}
             </div>
           </div>
         ))}

@@ -7,15 +7,17 @@ export async function GET() {
     // Read the products.json file
     const filePath = path.join(process.cwd(), "data", "products.json");
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const products = JSON.parse(fileContents);
+    const products: Product[] = JSON.parse(fileContents);
 
-    // Map through products to only add neccessary info
-    const simplifiedProducts = products.map((product: Product) => ({
+    // Map through products to only add necessary info
+    const simplifiedProducts = products.map((product) => ({
       id: product.id,
       name: product.name,
       description: product.description,
-      image: product.image,
+      images: product.images,
       price: product.price,
+
+      colors: product.colors,
     }));
 
     // Send the simplified products as response
