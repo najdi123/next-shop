@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -7,7 +7,10 @@ export const apiSlice = createApi({
         getProducts: builder.query({
             query: () => '/api/products',
         }),
+        getProductById: builder.query({
+            query: (productId) => `/api/product/${productId}`,
+        }),
     }),
-})
+});
 
-export const { useGetProductsQuery } = apiSlice
+export const { useGetProductsQuery, useGetProductByIdQuery } = apiSlice;
