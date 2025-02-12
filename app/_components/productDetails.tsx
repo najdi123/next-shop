@@ -1,33 +1,61 @@
 "use client";
+import Image from "next/image";
 import { useGetProductByIdQuery } from "../store/apiSlice";
+import { Product } from "@/types";
 
-export default function ProductDetails({ productId }: { productId: number }) {
-  const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
+type Props = {
+  productId: number;
+  initialProduct: Product;
+};
 
-  if (isLoading) return <p>Loading product details...</p>;
-  if (error) return <p>Error loading product</p>;
+export default function ProductDetails({ productId, initialProduct }: Props) {
+  const {
+    data: product,
+    isLoading,
+    error,
+    isFetching,
+  } = useGetProductByIdQuery(productId, {
+    skip: !!initialProduct, // Prevent API call if we have initial data
+  });
+
+  //Use SSR product first, then replace with fresh data when available
+  const displayedProduct = product || initialProduct;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">Error loading product</p>;
 
   return (
     <div>
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <img
-        src={product.images[product.colors[0]]}
-        alt={product.name}
-        width={300}
-      />
-      <p>Price: ${product.price}</p>
+      <h2>{displayedProduct.name}</h2>
+      <p>{displayedProduct.description}</p>
+
+      <div className="relative">
+        <Image
+          src={displayedProduct.images[displayedProduct.colors[0]]}
+          alt={displayedProduct.name}
+          width={300}
+          height={300}
+        />
+        {isFetching && (
+          <p className="absolute top-0 left-0 bg-white p-1 text-gray-500">
+            Updating...
+          </p>
+        )}
+      </div>
+
+      <p>Price: ${displayedProduct.price}</p>
+
       <div>
         <h3>Available Sizes:</h3>
-        {product.sizes.map((size: string) => (
+        {displayedProduct.sizes.map((size: string) => (
           <span key={size} className="border p-1 m-1">
             {size}
           </span>
         ))}
       </div>
+
       <div>
         <h3>Customer Reviews:</h3>
-        {product.reviews.map(
+        {displayedProduct.reviews.map(
           (review: { name: string; review: string }, index: number) => (
             <div key={index} className="border p-2">
               <strong>{review.name}:</strong> {review.review}
@@ -35,6 +63,10 @@ export default function ProductDetails({ productId }: { productId: number }) {
           )
         )}
       </div>
+
+      {isFetching && (
+        <p className="text-gray-500 mt-2">Fetching latest data...</p>
+      )}
     </div>
   );
 }
