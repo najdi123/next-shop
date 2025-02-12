@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Tee",
+    "description": "A comfortable and stylish classic tee.",
+    "image": "/images/classic-tee.jpg",
+    "price": 25.99,
+    "sizes": ["S", "M", "L"],
+    "colors": ["Red", "Blue", "Green"],
+    "reviews": []
+  },
+  {
+    "id": 2,
+    "name": "Slim Fit Jeans",
+    "description": "Modern slim-fit jeans for a trendy look.",
+    "image": "/images/slim-jeans.jpg",
+    "price": 49.99,
+    "sizes": ["28", "30", "32"],
+    "colors": ["Black", "Blue", "Gray"],
+    "reviews": []
+  }
+]
