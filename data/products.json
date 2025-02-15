@@ -9,8 +9,16 @@
       "#748195": "/images/pants/gray-pants.webp"
     },
     "price": 49.99,
-    "sizes": ["28", "30", "32"],
-    "colors": ["#000000", "#4B5F7B", "#748195"],
+    "sizes": [
+      "28",
+      "30",
+      "32"
+    ],
+    "colors": [
+      "#000000",
+      "#4B5F7B",
+      "#748195"
+    ],
     "reviews": [
       {
         "name": "Alice",
@@ -39,8 +47,16 @@
       "#D5C9C0": "/images/shirt/beige-shirt.webp"
     },
     "price": 39.99,
-    "sizes": ["M", "L", "XL"],
-    "colors": ["#2B2D4C", "#83848D", "#D5C9C0"],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "#2B2D4C",
+      "#83848D",
+      "#D5C9C0"
+    ],
     "reviews": [
       {
         "name": "David",
@@ -69,8 +85,16 @@
       "#FFFFFF": "/images/hoodie/white-hoodie.webp"
     },
     "price": 49.99,
-    "sizes": ["S", "M", "L"],
-    "colors": ["#D22D40", "#000000", "#FFFFFF"],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "#D22D40",
+      "#000000",
+      "#FFFFFF"
+    ],
     "reviews": [
       {
         "name": "Grace",
@@ -86,6 +110,78 @@
         "name": "Isla",
         "review": "I love the red color! It's perfect for winter.",
         "timestamp": "2023-10-03T16:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Classic Wool Hat",
+    "description": "A stylish and comfortable woolen hat, perfect for any casual look.",
+    "images": {
+      "#274279": "/images/hat/blueHat.webp",
+      "#B82645": "/images/hat/redHat.webp"
+    },
+    "price": 19.99,
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "#274279",
+      "#B82645"
+    ],
+    "reviews": [
+      {
+        "name": "Jack",
+        "review": "Great fit and protects well from the cold. Love the blue!",
+        "timestamp": "2023-10-04T09:30:00Z"
+      },
+      {
+        "name": "Sophia",
+        "review": "The red hat is stylish and very well-made!",
+        "timestamp": "2023-10-05T12:45:00Z"
+      },
+      {
+        "name": "Oliver",
+        "review": "Good quality and adjustable fit. Will buy again.",
+        "timestamp": "2023-10-06T15:10:00Z"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Winter Puffer Jacket",
+    "description": "A warm and durable puffer jacket for the coldest days.",
+    "images": {
+      "#FFFFFF": "/images/jacket/whiteJacket.webp",
+      "#AB5046": "/images/jacket/redJacket.webp"
+    },
+    "price": 89.99,
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "#FFFFFF",
+      "#AB5046"
+    ],
+    "reviews": [
+      {
+        "name": "Emma",
+        "review": "Very warm and stylish! The white color looks clean.",
+        "timestamp": "2023-10-04T11:15:00Z"
+      },
+      {
+        "name": "Noah",
+        "review": "Great quality, and the red color is unique and vibrant.",
+        "timestamp": "2023-10-05T14:20:00Z"
+      },
+      {
+        "name": "Lucas",
+        "review": "Fits perfectly, and it's very comfortable for winter.",
+        "timestamp": "2023-10-06T18:30:00Z"
       }
     ]
   }
