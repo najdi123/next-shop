@@ -9,51 +9,57 @@ export interface CartItem {
 }
 
 interface CartState {
-    items: CartItem[];
+    items: Record<string, CartItem>;
 }
 
 const initialState: CartState = {
-    items: [],
+    items: {},
 };
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        /**
-         * Add (or increment) an item in the cart.
-         * - If item with same (product.id, color, size) exists, quantity += action.payload.quantity
-         * - else, push new item
-         */
         addToCart: (state, action: PayloadAction<CartItem>) => {
-            const { product, color, size } = action.payload;
-            const existingItem = state.items.find(
-                (i) =>
-                    i.product.id === product.id &&
-                    i.color === color &&
-                    i.size === size
-            );
-            console.log('add product called 99999999999999999999')
-            console.log('action.payload', action.payload)
-            if (existingItem) {
-                console.log('iffffffffff')
+            const { product, color, size, quantity } = action.payload;
+            const productKey = `${product.id}_${color}_${size}`; // Unique key
 
-                existingItem.quantity += action.payload.quantity;
+            if (state.items[productKey]) {
+                state.items[productKey].quantity += quantity;
             } else {
-                console.log('elseeeeeeeeeeee')
-
-                state.items.push(action.payload);
+                state.items[productKey] = action.payload;
             }
         },
+
+        removeFromCart: (
+            state,
+            action: PayloadAction<{ productId: number; color: string; size: string }>
+        ) => {
+            const { productId, color, size } = action.payload;
+            const productKey = `${productId}_${color}_${size}`;
+
+            delete state.items[productKey]; // Removes item
+        },
+
+        updateCartItemQuantity: (
+            state,
+            action: PayloadAction<{ productId: number; color: string; size: string; newQuantity: number }>
+        ) => {
+            const { productId, color, size, newQuantity } = action.payload;
+            const productKey = `${productId}_${color}_${size}`;
+
+            if (newQuantity <= 0) {
+                delete state.items[productKey];
+            } else if (state.items[productKey]) {
+                state.items[productKey].quantity = newQuantity;
+            }
+        },
+
         clearCart: (state) => {
-            state.items = [];
+            state.items = {};
         },
     },
 });
 
-export const {
-    addToCart,
-    clearCart,
-} = cartSlice.actions;
-
+export const { addToCart, removeFromCart, updateCartItemQuantity, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
