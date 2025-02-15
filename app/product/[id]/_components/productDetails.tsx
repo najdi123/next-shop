@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useGetProductByIdQuery } from "../../store/apiSlice";
+import { useGetProductByIdQuery } from "../../../store/apiSlice";
 import { Product } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import ImageDisplayer from "./imageDisplayer";
-import ProductInfo from "./productInfo";
-import { addToCart } from "../../store/cartSlice";
+import ProductInfo from "../productInfo";
+import { addToCart } from "../../../store/cartSlice";
 import CustomerReviews from "./customerReviews";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -101,7 +101,10 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
       <Separator />
 
       {/* Customer Reviews */}
-      <CustomerReviews reviews={displayedProduct.reviews} />
+      <CustomerReviews
+        reviews={displayedProduct.reviews}
+        productId={productId}
+      />
 
       {isFetching && (
         <p className="text-gray-500 mt-4 text-center">
