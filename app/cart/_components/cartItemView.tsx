@@ -10,10 +10,6 @@ import {
   removeFromCart,
 } from "@/app/store/cartSlice";
 
-/**
- * Props for displaying a single cart item.
- * No external query; we already have the product details.
- */
 type Props = {
   item: CartItem;
 };
@@ -23,7 +19,8 @@ export default function CartItemView({ item }: Props) {
   const { product, color, size, quantity } = item;
 
   // Get image based on the selected color
-  const colorImage = product.images[color];
+  const colorObj = product.colors.find((c) => c.name === color);
+  const colorImage = colorObj?.image;
 
   // Handle incrementing quantity
   const handleIncrement = () => {
@@ -75,7 +72,6 @@ export default function CartItemView({ item }: Props) {
       <div className="w-full ml-6">
         <h2 className="text-lg font-semibold">{product.name}</h2>
         <p className="text-muted-foreground">Price: {product.price}</p>
-        <p className="text-muted-foreground">Color: {color}</p>
         <p className="text-muted-foreground">Size: {size}</p>
       </div>
       {/* Product quantity */}

@@ -14,13 +14,13 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
 
-  // Get the current image based on the selected color
-  const currentImage = product.images[product.colors[selectedColorIndex]];
+  const currentColor = product.colors[selectedColorIndex];
+  const currentImage = currentColor.image;
 
-  // Handle clicking on a color to update the image
   const handleColorClick = (index: number) => {
     setSelectedColorIndex(index);
   };
+
   return (
     <Card className="bg-card text-card-foreground shadow-lg rounded-xl overflow-hidden transition-transform hover:scale-105">
       <Link href={`/product/${product.id}`} passHref>
@@ -46,13 +46,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="mt-2 flex space-x-2">
           {product.colors.map((color, index) => (
             <div
-              key={color}
+              key={color.hex} // or color.name
               className={`w-6 h-6 rounded-full border-2 cursor-pointer ${
                 index === selectedColorIndex
                   ? "border-primary ring-2 ring-primary"
                   : "border-gray-300"
               }`}
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: color.hex }}
               onClick={() => handleColorClick(index)}
             />
           ))}

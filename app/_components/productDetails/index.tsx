@@ -28,6 +28,7 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
 
   const displayedProduct = product || initialProduct;
 
+  // Store the user’s selected color name or hex—whichever you prefer
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [selectedSize, setSelectedSize] = useState<string>("");
 
@@ -77,9 +78,11 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
       {/* Responsive Layout for Image & Product Info */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8">
         <ImageDisplayer
-          images={displayedProduct.images as Record<string, string>}
+          // Pass the entire colors array now
+          colors={displayedProduct.colors}
           productName={displayedProduct.name}
           isFetching={isFetching}
+          // We still track which color is selected as a string
           selectedColor={selectedColor}
           onColorSelect={setSelectedColor}
         />
@@ -91,7 +94,6 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
           sizes={displayedProduct.sizes}
           selectedSize={selectedSize}
           onSizeSelect={setSelectedSize}
-          // Provide the "Add to Cart" callback
           onAddToCart={handleAddToCart}
         />
       </div>

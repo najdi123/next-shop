@@ -4,13 +4,18 @@ export type Review = {
   timestamp: string;
 };
 
+export type ColorOption = {
+  name: string;
+  hex: string;
+  image: string; // URL to the corresponding image
+};
+
 export type Product = {
   id: number;
   name: string;
   description: string;
-  images: { [color: string]: string };
   price: number;
   sizes: string[];
-  colors: string[];
+  colors: ColorOption[];
   reviews: Review[];
 };

@@ -3,32 +3,36 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 
+type ColorObject = {
+  name: string;
+  hex: string;
+  image: string;
+};
+
 type Props = {
-  images: Record<string, string>;
+  colors: ColorObject[];
   productName: string;
   isFetching: boolean;
-  selectedColor: string; // <-- new prop
-  onColorSelect: (color: string) => void; // <-- new prop
+  selectedColor: string;
+  onColorSelect: (colorName: string) => void;
 };
 
 export default function ImageDisplayer({
-  images,
+  colors,
   productName,
   isFetching,
   selectedColor,
   onColorSelect,
 }: Props) {
-  const imageArray = Object.entries(images);
-
-  // If no color has been selected yet, default to the first one
+  // If no color is selected yet, default to the first color in the array
   useEffect(() => {
-    if (!selectedColor && imageArray.length > 0) {
-      onColorSelect(imageArray[0][0]);
+    if (!selectedColor && colors.length > 0) {
+      onColorSelect(colors[0].name);
     }
-  }, [selectedColor, imageArray, onColorSelect]);
+  }, [selectedColor, colors, onColorSelect]);
 
-  // The main image to display is whatever color is selected
-  const mainImage = selectedColor ? images[selectedColor] : null;
+  const selectedColorObj = colors.find((c) => c.name === selectedColor);
+  const mainImage = selectedColorObj?.image;
 
   return (
     <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 mx-auto">
@@ -46,24 +50,26 @@ export default function ImageDisplayer({
             style={{ opacity: isFetching ? 0.5 : 1 }}
           />
         ) : (
-          // If there's no mainImage, either show nothing or a fallback
+          // Fallback if there's no image for the selected color
           <Skeleton className="w-full h-full rounded-lg" />
         )}
       </div>
 
       {/* Thumbnails */}
       <div className="flex space-x-3 md:flex-col md:space-x-0 md:space-y-3">
-        {imageArray.slice(0, 3).map(([color, imageUrl]) => (
+        {colors.slice(0, 3).map((colorObj) => (
           <button
-            key={color}
+            key={colorObj.name}
             className={`border rounded-lg p-1 transition ${
-              selectedColor === color ? "border-primary" : "border-gray-300"
+              selectedColor === colorObj.name
+                ? "border-primary"
+                : "border-gray-300"
             }`}
-            onClick={() => onColorSelect(color)}
+            onClick={() => onColorSelect(colorObj.name)}
           >
             <Image
-              src={imageUrl}
-              alt={`${productName} - ${color}`}
+              src={colorObj.image}
+              alt={`${productName} - ${colorObj.name}`}
               width={80}
               height={80}
               className="rounded-md object-cover"

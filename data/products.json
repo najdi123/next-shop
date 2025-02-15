@@ -3,11 +3,6 @@
     "id": 2,
     "name": "Slim Fit Pants",
     "description": "Modern slim-fit cotton pants for a trendy look.",
-    "images": {
-      "#000000": "/images/pants/black-pants.webp",
-      "#4B5F7B": "/images/pants/blue-pants.webp",
-      "#748195": "/images/pants/gray-pants.webp"
-    },
     "price": 49.99,
     "sizes": [
       "28",
@@ -15,9 +10,21 @@
       "32"
     ],
     "colors": [
-      "#000000",
-      "#4B5F7B",
-      "#748195"
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": "/images/pants/black-pants.webp"
+      },
+      {
+        "name": "blue",
+        "hex": "#4B5F7B",
+        "image": "/images/pants/blue-pants.webp"
+      },
+      {
+        "name": "gray",
+        "hex": "#748195",
+        "image": "/images/pants/gray-pants.webp"
+      }
     ],
     "reviews": [
       {
@@ -41,11 +48,6 @@
     "id": 3,
     "name": "Long Sleeve Shirt",
     "description": "A stylish long sleeve shirt available in multiple colors.",
-    "images": {
-      "#2B2D4C": "/images/shirt/navy-shirt.webp",
-      "#83848D": "/images/shirt/gray-shirt.webp",
-      "#D5C9C0": "/images/shirt/beige-shirt.webp"
-    },
     "price": 39.99,
     "sizes": [
       "M",
@@ -53,9 +55,21 @@
       "XL"
     ],
     "colors": [
-      "#2B2D4C",
-      "#83848D",
-      "#D5C9C0"
+      {
+        "name": "navy",
+        "hex": "#2B2D4C",
+        "image": "/images/shirt/navy-shirt.webp"
+      },
+      {
+        "name": "gray",
+        "hex": "#83848D",
+        "image": "/images/shirt/gray-shirt.webp"
+      },
+      {
+        "name": "beige",
+        "hex": "#D5C9C0",
+        "image": "/images/shirt/beige-shirt.webp"
+      }
     ],
     "reviews": [
       {
@@ -79,11 +93,6 @@
     "id": 4,
     "name": "Hoodie",
     "description": "A cozy hoodie perfect for chilly days.",
-    "images": {
-      "#D22D40": "/images/hoodie/red-hoodie.webp",
-      "#000000": "/images/hoodie/black-hoodie.webp",
-      "#FFFFFF": "/images/hoodie/white-hoodie.webp"
-    },
     "price": 49.99,
     "sizes": [
       "S",
@@ -91,9 +100,21 @@
       "L"
     ],
     "colors": [
-      "#D22D40",
-      "#000000",
-      "#FFFFFF"
+      {
+        "name": "red",
+        "hex": "#D22D40",
+        "image": "/images/hoodie/red-hoodie.webp"
+      },
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": "/images/hoodie/black-hoodie.webp"
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "image": "/images/hoodie/white-hoodie.webp"
+      }
     ],
     "reviews": [
       {
@@ -117,10 +138,6 @@
     "id": 5,
     "name": "Classic Wool Hat",
     "description": "A stylish and comfortable woolen hat, perfect for any casual look.",
-    "images": {
-      "#274279": "/images/hat/blueHat.webp",
-      "#B82645": "/images/hat/redHat.webp"
-    },
     "price": 19.99,
     "sizes": [
       "S",
@@ -128,8 +145,16 @@
       "L"
     ],
     "colors": [
-      "#274279",
-      "#B82645"
+      {
+        "name": "blue",
+        "hex": "#274279",
+        "image": "/images/hat/blueHat.webp"
+      },
+      {
+        "name": "red",
+        "hex": "#B82645",
+        "image": "/images/hat/redHat.webp"
+      }
     ],
     "reviews": [
       {
@@ -153,10 +178,6 @@
     "id": 6,
     "name": "Winter Puffer Jacket",
     "description": "A warm and durable puffer jacket for the coldest days.",
-    "images": {
-      "#FFFFFF": "/images/jacket/whiteJacket.webp",
-      "#AB5046": "/images/jacket/redJacket.webp"
-    },
     "price": 89.99,
     "sizes": [
       "M",
@@ -164,8 +185,16 @@
       "XL"
     ],
     "colors": [
-      "#FFFFFF",
-      "#AB5046"
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "image": "/images/jacket/whiteJacket.webp"
+      },
+      {
+        "name": "red",
+        "hex": "#AB5046",
+        "image": "/images/jacket/redJacket.webp"
+      }
     ],
     "reviews": [
       {
