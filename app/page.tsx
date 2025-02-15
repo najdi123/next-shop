@@ -1,5 +1,6 @@
 import { Product } from "@/types";
 import ClientHome from "./_components/clientHome";
+import { Container } from "@/components/ui/container";
 
 export default async function HomePage() {
   // SSR fetch to API route
@@ -9,11 +10,11 @@ export default async function HomePage() {
   const products: Product[] = await res.json();
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-        <ClientHome initialProducts={products} />
-      </div>
-    </div>
+    <Container className="py-8">
+      <h1 className="text-3xl font-bold text-primary mb-6 text-center">
+        Featured Products
+      </h1>
+      <ClientHome initialProducts={products} />
+    </Container>
   );
 }
