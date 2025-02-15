@@ -2,9 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CartItem, updateCartItemQuantity } from "@/app/store/cartSlice";
+import { CartItem } from "@/app/store/cartSlice";
 
 /**
  * Props for displaying a single cart item.
@@ -15,23 +15,23 @@ type Props = {
 };
 
 export default function CartItemView({ item }: Props) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { product, color, size, quantity } = item;
 
   // Get image based on the selected color
   const colorImage = product.images[color];
 
   // Handle incrementing quantity
-  const handleIncrement = () => {
-    dispatch(
-      updateCartItemQuantity({
-        productId: product.id,
-        color,
-        size,
-        newQuantity: quantity + 1,
-      })
-    );
-  };
+  // const handleIncrement = () => {
+  //   dispatch(
+  //     updateCartItemQuantity({
+  //       productId: product.id,
+  //       color,
+  //       size,
+  //       newQuantity: quantity + 1,
+  //     })
+  //   );
+  // };
 
   return (
     <div className="border p-4 rounded-md flex items-start space-x-4 shadow-sm">
@@ -57,12 +57,12 @@ export default function CartItemView({ item }: Props) {
         <p className="text-muted-foreground flex items-center gap-2">
           Quantity: {quantity}
           {/* Increment quantity button */}
-          <button
+          {/* <button
             onClick={handleIncrement}
             className="px-2 py-1 bg-primary text-white rounded-md"
           >
             +
-          </button>
+          </button> */}
         </p>
       </div>
     </div>
