@@ -14,9 +14,8 @@ export async function GET() {
       id: product.id,
       name: product.name,
       description: product.description,
-      images: product.images,
       price: product.price,
-
+      sizes: product.sizes,
       colors: product.colors,
     }));
 

@@ -19,3 +19,8 @@ export type Product = {
   colors: ColorOption[];
   reviews: Review[];
 };
+
+export type ProductFilters = {
+  color?: string;
+  size?: string;
+};

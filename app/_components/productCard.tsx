@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,10 +9,27 @@ import { Button } from "@/components/ui/button";
 
 type ProductCardProps = {
   product: Product;
+  filterColor?: string;
 };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  filterColor,
+}: ProductCardProps) {
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+
+  // When filter color changes, auto-select that color if the product has it
+  useEffect(() => {
+    if (!filterColor) return; // no color filter => do nothing
+
+    const index = product.colors.findIndex((c) => c.name === filterColor);
+    if (index !== -1) {
+      setSelectedColorIndex(index);
+    } else {
+      // e.g. product doesn't have that color, default to first color or 0
+      setSelectedColorIndex(0);
+    }
+  }, [filterColor, product.colors]);
 
   const currentColor = product.colors[selectedColorIndex];
   const currentImage = currentColor.image;
