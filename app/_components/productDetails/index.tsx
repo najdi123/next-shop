@@ -8,7 +8,9 @@ import ImageDisplayer from "./imageDisplayer";
 import ProductInfo from "./productInfo";
 import { addToCart } from "../../store/cartSlice";
 import CustomerReviews from "./customerReviews";
-import { store } from "@/app/store/store";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 type Props = {
   productId: number;
@@ -21,17 +23,14 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
     isFetching,
     error,
   } = useGetProductByIdQuery(productId, {
-    skip: !!initialProduct, // Prevent call if SSR data is already present
+    skip: !!initialProduct,
   });
 
-  // Use SSR product first, then replace with fresh data when available
   const displayedProduct = product || initialProduct;
 
-  // 1) Local state for color and size
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [selectedSize, setSelectedSize] = useState<string>("");
 
-  // 2) Dispatch function to call our cart actions
   const dispatch = useDispatch();
 
   if (error) {
@@ -42,7 +41,6 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
     );
   }
 
-  // 3) Handler for the "Add to Cart" flow
   const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
       alert("Please select a color and size first.");
@@ -50,32 +48,34 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
     }
     dispatch(
       addToCart({
-        // Pass the entire product object instead of just productId
         product: displayedProduct,
         color: selectedColor,
         size: selectedSize,
         quantity: 1,
       })
     );
-    console.log("Store state after addToCart:", store.getState().cart.items);
     alert("Product added to cart!");
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8 space-y-8">
-      {/* Product Name & Description */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-foreground">
-          {displayedProduct.name}
-        </h1>
-        <p className="text-muted-foreground mt-2">
-          {displayedProduct.description}
-        </p>
+    <Card className="max-w-5xl mx-auto px-6 py-8 space-y-8">
+      <div className="flex justify-between">
+        {/* Product Name & Description */}
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-foreground">
+            {displayedProduct.name}
+          </h1>
+          <p className="text-muted-foreground mt-2">
+            {displayedProduct.description}
+          </p>
+        </div>
+        <Button variant="outline" className="px-4 py-2">
+          <Link href="/cart">Go to Cart</Link>
+        </Button>
       </div>
 
       {/* Responsive Layout for Image & Product Info */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8">
-        {/* Pass selectedColor and setter so ImageDisplayer can call back */}
         <ImageDisplayer
           images={displayedProduct.images as Record<string, string>}
           productName={displayedProduct.name}
@@ -86,7 +86,6 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
 
         <Separator vertical className="hidden lg:block" />
 
-        {/* Pass selectedSize and onSizeSelect so ProductInfo can change the size */}
         <ProductInfo
           price={displayedProduct.price}
           sizes={displayedProduct.sizes}
@@ -107,6 +106,6 @@ export default function ProductDetails({ productId, initialProduct }: Props) {
           Fetching latest data...
         </p>
       )}
-    </div>
+    </Card>
   );
 }
