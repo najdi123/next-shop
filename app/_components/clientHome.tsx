@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function ClientHome({ initialProducts }: Props) {
-  const { data: productsData, isLoading, error } = useGetProductsQuery(null);
+  const { data: productsData, isLoading, error } = useGetProductsQuery();
   // Fallback to SSR data if the RTK Query is still loading
   const products = productsData || initialProducts;
 
