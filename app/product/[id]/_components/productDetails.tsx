@@ -5,7 +5,7 @@ import { useGetProductByIdQuery } from "../../../store/apiSlice";
 import { Product } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import ImageDisplayer from "./imageDisplayer";
-import ProductInfo from "../productInfo";
+import ProductInfo from "./productInfo";
 import { addToCart } from "../../../store/cartSlice";
 import CustomerReviews from "./customerReviews";
 import Link from "next/link";
