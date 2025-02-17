@@ -11,7 +11,7 @@ GET /api/products - Fetches all products
 GET /api/product/[id] - Fetches a single product by ID
 POST /api/product/[id]/review - Adds a review to a product
 ⚙️ How It Works
-Products are fetched from an API and displayed using RTK Query.
+Products are fetched from an API and displayed using SSR and RTK Query.
 Users can filter products by color and size.
 The shopping cart is managed with Redux.
 Users can write reviews, which are optimistically updated in the UI.
